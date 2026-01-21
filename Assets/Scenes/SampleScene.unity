@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 412726753}
   - component: {fileID: 412726752}
   - component: {fileID: 412726751}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1698,7 +1698,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 34
+  field of view: 54.6
   orthographic: 1
   orthographic size: 5
   m_Depth: -1
@@ -1940,6 +1940,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 914986470}
+  - {fileID: 1500173660}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1001880239
@@ -1958,7 +1959,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 4
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b4be3a5133d2c5a4aa1ad2f2175020f7, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2027,7 +2028,19 @@ MonoBehaviour:
     m_ActionId: 27c5f898-bc57-4ee1-8800-db469aca5fe3
     m_ActionName: 'Player/Crouch[/Keyboard/c]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1001880242}
+        m_TargetAssemblyTypeName: Player2DMovement, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f1ba0d36-48eb-4cd5-b651-1c94a6531f70
     m_ActionName: 'Player/Jump[/Keyboard/space]'
   - m_PersistentCalls:
@@ -2099,7 +2112,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e87f9af0eadbd848a3615f7525d19da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player2DMovement
-  moveSpeed: 3
+  moveSpeed: 3.5
+  jumpForce: 13
+  extraJumps: 1
+  groundCheckPos: {fileID: 1500173660}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  baseGravity: 4
+  maxFallSpeed: 9.81
+  fallSpeedMultiplier: 1
 --- !u!61 &1001880243
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2192,7 +2214,7 @@ GameObject:
   - component: {fileID: 1400873226}
   - component: {fileID: 1400873225}
   m_Layer: 10
-  m_Name: Background
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3231,6 +3253,37 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1500173659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1500173660}
+  m_Layer: 8
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1500173660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500173659}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.504, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1001880238}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1932166273
 GameObject:
   m_ObjectHideFlags: 0
