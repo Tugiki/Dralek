@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour
 
         if (progressAmount >= 100)
         {
-            //Level Complete
+                                                                //Level Complete
             LoadCanvas.SetActive(true);
             Debug.Log("Level Complete!");
         }
@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
 
     void LoadNextLevel()
     {
-         int nextLevelIndex = (currentLevelIndex == levels.Count - 1) ? 0 : currentLevelIndex + 1;
+        int nextLevelIndex = (currentLevelIndex == levels.Count - 1) ? 0 : currentLevelIndex + 1;
         LoadCanvas.SetActive(false);
 
         levels[currentLevelIndex].SetActive(false);
