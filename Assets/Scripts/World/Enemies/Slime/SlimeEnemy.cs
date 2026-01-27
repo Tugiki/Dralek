@@ -27,8 +27,8 @@ public class SlimeEnemy : MonoBehaviour
              isCrashed = true;
 
         }
-         else if (isCrashed = Physics2D.Raycast(transform.position, Vector2.right, 1f, wallLayer))
-         {
+        else if (Physics2D.Raycast(transform.position, Vector2.right, 1f, wallLayer))
+        {
              isCrashed = false;
         }
     }
