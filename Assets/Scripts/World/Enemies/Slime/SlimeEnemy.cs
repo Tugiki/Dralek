@@ -35,6 +35,16 @@ public class SlimeEnemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+        while (isCrashed)
+        {
+            rb.linearVelocity = new Vector2(slimeSpeed, 0);
+            return;
+        }
+        while (!isCrashed)
+        {
+            rb.linearVelocity = new Vector2(-slimeSpeed, 0);
+            return;
+
+        }
     }
 }
