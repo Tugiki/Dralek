@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SlimeEnemy : MonoBehaviour
 {
-    public Transform groundLoc;
+    public Animator animator;
     public float slimeSpeed = 2f;
     public float slimeUpWardSpeed = 1;
     public LayerMask wallLayer;
@@ -13,38 +13,57 @@ public class SlimeEnemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        isCrashed = true; ;
+        isCrashed = Random.value < 0.5f;
 
     }
 
 
     void Update()
     {
-       
+        
 
         if (Physics2D.Raycast(transform.position, Vector2.left, 1f, wallLayer))
-         {
-             isCrashed = true;
+        {
+            isCrashed = true;
 
         }
         else if (Physics2D.Raycast(transform.position, Vector2.right, 1f, wallLayer))
         {
-             isCrashed = false;
+            isCrashed = false;
         }
     }
 
     private void FixedUpdate()
     {
-        while (isCrashed)
-        {
-            rb.linearVelocity = new Vector2(slimeSpeed, 0);
-            return;
-        }
-        while (!isCrashed)
-        {
-            rb.linearVelocity = new Vector2(-slimeSpeed, 0);
-            return;
+        SlimeMovement();
+        AnimatorFunc();
 
+    }
+
+    private void SlimeMovement()
+    {
+        if (transform.position.y <= -0.5)
+        {
+            rb.linearVelocity = new Vector2(0, slimeUpWardSpeed);
         }
+        else
+        {
+            if (isCrashed)
+            {
+                rb.linearVelocity = new Vector2(slimeSpeed, 0);
+                return;
+            }
+            if (!isCrashed)
+            {
+                rb.linearVelocity = new Vector2(-slimeSpeed, 0);
+                return;
+
+            }
+        }
+    }
+    private void AnimatorFunc()
+    {
+        animator.SetFloat("X", rb.linearVelocityX);
+        animator.SetFloat("Y", rb.linearVelocityY);
     }
 }
