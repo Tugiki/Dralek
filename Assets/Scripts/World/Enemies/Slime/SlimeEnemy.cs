@@ -51,12 +51,12 @@ public class SlimeEnemy : MonoBehaviour
             if (isCrashed)
             {
                 rb.linearVelocity = new Vector2(slimeSpeed, 0);
-                return;
+               
             }
             if (!isCrashed)
             {
                 rb.linearVelocity = new Vector2(-slimeSpeed, 0);
-                return;
+               
 
             }
         }
