@@ -14,6 +14,14 @@ public class EnemySpawner : MonoBehaviour
         Tank
     }
 
+    public enum TileMapType
+    {
+        SlimeSpawn,
+        WarriorSpawn,
+        TankSpawn
+    }
+
+    
     public Tilemap tilemap;
     public int maxLiveEnemies = 6;
     public float spawnInterval = 3.0f;
