@@ -7,26 +7,16 @@ using UnityEngine.Tilemaps;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public enum EnemyType
+    public enum EnemyType // Düþman türlerini tanýmlamak için enum oluþturuldu. Ýleride farklý düþman türleri eklenebilir.
     {
-        Slime,
-        Warrior,
-        Tank
+        SlimeT1, 
+        SlimeT2,
+        SlimeT3
     }
-
-    public enum TileMapType
-    {
-        SlimeSpawn,
-        WarriorSpawn,
-        TankSpawn
-    }
-
-    
     public Tilemap tilemap;
     public int maxLiveEnemies = 6;
     public float spawnInterval = 3.0f;
-    public GameObject[] enemyPrefab;
-
+    public GameObject[] enemyPrefab; // Düþman prefablarýnýn atanacaðý dizi. Ýleride farklý düþman türleri eklenebilir.
     private List<Vector3> spawnPoints = new List<Vector3>();
     private List<GameObject> liveEnemies = new List<GameObject>();
     private bool isSpawning = false;
@@ -68,7 +58,7 @@ public class EnemySpawner : MonoBehaviour
     {
         float randomChoice = Random.value;
          /* Düzenlenecek */
-        return EnemyType.Slime;
+        return EnemyType.SlimeT1;
     }
     private void SpawnEnemy()
     {
