@@ -10,6 +10,8 @@ public class SlimeEnemy : MonoBehaviour
     private Rigidbody2D rb;
     private bool isCrashed;
 
+    public int damage = 1;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
